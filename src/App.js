@@ -8,8 +8,8 @@ import {
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import QuotesScene from './scenes/Quotes/';
-import NewQuotes from './scenes/NewQuotes';
-import './App.css';
+import GameBoard from './scenes/GameBoard/';
+import NewQuotes from './scenes/NewQuotes/';
 
 class App extends Component {
   render() {
@@ -20,6 +20,7 @@ class App extends Component {
             <Header />
             <Route exact path="/" component={QuotesScene} />
             <Route exact path="/new-quote" component={NewQuotes} />
+            <Route exact path="/game-board" component={GameBoard} />
           </div> 
         </Router>
       </MuiThemeProvider>

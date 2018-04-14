@@ -13,6 +13,9 @@ const HeaderNavigation = () => {
             <li className="header-nav__item">
                 <NavLink activeClassName="header-nav__link--active" className="header-nav__link" to="/new-quote">New quote</NavLink>
             </li>
+            <li className="header-nav__item">
+                <NavLink activeClassName="header-nav__link--active" className="header-nav__link" to="/game-board">Game board</NavLink>
+            </li>
         </ul>
     )
 }; 

@@ -1,1 +1,1 @@
-export * from './newQuotesReducer';
+export * from './gameBoardReducer';

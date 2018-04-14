@@ -1,3 +1,4 @@
+import React from "react";
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -24,6 +25,7 @@ const Button = styled.button`
   font-size: 1rem;
   line-height: 1.5;
   border: none;
+  text-transform: uppercase;
 `;
  
 export default Button;

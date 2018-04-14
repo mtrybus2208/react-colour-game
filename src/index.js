@@ -8,6 +8,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { quotesReducer } from './scenes/Quotes/reducers/';
+import { gameBoardReducer } from './scenes/GameBoard/reducers/';
 import { newQuotesReducer } from './scenes/NewQuotes/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -15,7 +16,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer  = combineReducers(
   {
     quotesReducer,
-    newQuotesReducer
+    newQuotesReducer,
+    gameBoardReducer
   }
 );
 
