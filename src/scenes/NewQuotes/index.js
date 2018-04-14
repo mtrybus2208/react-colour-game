@@ -7,8 +7,8 @@ import {
 import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
 
+import Button from './../../components/Button';
 import Container from './../../components/Container';
 import * as fromActions from './actions';
 import './styles.css';
@@ -20,14 +20,15 @@ const style = {
 }
 const style1 = {
   color: '#000',
-  backgroundColor: 'red'
-}
-const style3 = {
-  color: '#000',
-  backgroundColor: 'pink'
 }
 const textField = { 
   margin: '40px auto',
+}
+
+const myState = {
+  colorName: 'black',
+  bg: '#000',
+  color: 'pink'
 }
  
 class NewQuotes extends Component {
@@ -54,8 +55,9 @@ class NewQuotes extends Component {
               fullWidth={true}
               style={textField}
               onChange={this.onChangeQuote()}/>
-            <RaisedButton label="Send"  fullWidth={true} />
-            <RaisedButton label="Send"  rippleStyle={style3} fullWidth={true} overlayStyle={style1} />
+            <Button>
+              {myState.colorName}
+            </Button>
           </Paper> 
       </Container>
     );
