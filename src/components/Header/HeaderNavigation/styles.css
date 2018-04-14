@@ -1,0 +1,21 @@
+.header-nav {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.header-nav__item {
+  list-style-type: none;
+}
+.header-nav__link {
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  margin: 0 10px; 
+}
+.header-nav__link:hover {
+  color: rgb(0, 188, 212);
+  text-decoration: none;
+  margin: 0 10px; 
+}
+.header-nav__link--active {
+  color: rgb(0, 188, 212);
+}
