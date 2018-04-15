@@ -28,6 +28,11 @@ export const gameBoardReducer = (state = initialState, action) => {
         ...state,
         score: state.score + 1
       };
+    case actionTypes.RESET_RESULT: 
+      return {
+        ...state,
+        score: 0
+      };
     default:
       return state;
     }

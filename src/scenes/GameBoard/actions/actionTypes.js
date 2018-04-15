@@ -12,3 +12,4 @@ export const COMPARE_COLOURS_FAIL =  '[Game Board] Compare Fail';
 
 // Update result
 export const UPDATE_RESULT =  '[Game Board] Update Result';
+export const RESET_RESULT =  '[Game Board] Reset Result';

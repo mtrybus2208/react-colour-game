@@ -68,3 +68,7 @@ export const compareColoursFail = () => ({
 export const updateResult = () => ({
   type: actionTypes.UPDATE_RESULT,
 });
+
+export const resetResult = () => ({
+  type: actionTypes.RESET_RESULT,
+});
