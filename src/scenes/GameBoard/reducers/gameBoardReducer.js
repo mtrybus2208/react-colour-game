@@ -2,6 +2,7 @@ import * as actionTypes from './../actions/actionTypes';
 
 const initialState = {
   iterations: 10,
+  question: { colour: '#b36bc5', name: 'purple' },
   base: [
     { colour: '#b36bc5', name: 'purple' },
     { colour: '#FFC107', name: 'yellow' },
@@ -14,9 +15,11 @@ const initialState = {
 
 export const gameBoardReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.CHANGE_QUOTE:
+    case actionTypes.SHUFFLE_COLOURS_SUCCESS: 
       return {
         ...state,
+        base: [...action.payload.shuffled],
+        question: {...action.payload.question}
       };
     default:
       return state;

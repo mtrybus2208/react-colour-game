@@ -34,7 +34,6 @@ const myState = {
 class GameBoard extends Component {
   constructor(props) {
     super(props);
-    this.colourShuffle = this.colourShuffle.bind(this); 
     this.state = {
       question: [],
       shuffled: []
@@ -42,39 +41,11 @@ class GameBoard extends Component {
   }
 
   componentDidMount() {
-    this.colourShuffle();
-  }
-  
-  colourShuffle() {
-    const base = [...this.props.gameBoardReducer.base];  
- 
-    const names = base.map(item => ({name: item.name}))
-      .sort(() => (.5 - Math.random()));
-
-    const colors = base.map((item, index) => ({colour: item.colour}))
-      .sort(() => (.5 - Math.random()));
-
-    const question =  {
-        ...names[Math.floor(Math.random() * base.length)], 
-        ...colors[Math.floor(Math.random() * base.length)], 
-    };
- 
-    const shuffled = colors.map((colour, index) => {
-      return {
-        ...colour,
-        name: names[index].name
-      }
-    });  
-
-    this.setState({
-      question,
-      shuffled,
-    }); 
-    
+    const base = [...this.props.base];  
+    this.props.shuffleColours(base, false);
   }
  
   render() {
-    console.log()
     return (
       <Container>  
           <Paper  zDepth={1} style={style}>
@@ -82,11 +53,11 @@ class GameBoard extends Component {
                 <Grid fluid>
                   <Row>
                     <Col xs={12}>
-                      <ColourItem customColour={this.state.question.colour}>
-                        {this.state.question.name}
+                      <ColourItem customColour={this.props.question.colour}>
+                        {this.props.question.name}
                       </ColourItem>
                     </Col>
-                    {this.state.shuffled.map((item, key) => {
+                    {this.props.base.map((item, key) => {
                       return (
                         <Col key={key} xs={6}>
                           <Button style={{backgroundColor: item.colour}}>
@@ -104,22 +75,18 @@ class GameBoard extends Component {
   }
 }
 
-const mapStateToProps = (state) => { 
+const mapStateToProps = ({gameBoardReducer}) => { 
   return {
-    gameBoardReducer: state.gameBoardReducer
+    base: gameBoardReducer.base,
+    question: gameBoardReducer.question
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeQuote: (payload) => {
+    shuffleColours: (payload) => {
       dispatch(
-        fromActions.changeQuote(payload)
-      )
-    },
-    submitQuotesForm: (payload) => {
-      dispatch(
-        fromActions.submitQuotesForm(payload)
+        fromActions.shuffleColours(payload)
       )
     },
   }
