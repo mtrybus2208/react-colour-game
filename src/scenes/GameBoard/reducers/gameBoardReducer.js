@@ -1,8 +1,10 @@
 import * as actionTypes from './../actions/actionTypes';
 
 const initialState = {
+  score: 0,
   iterations: 10,
-  question: { colour: '#b36bc5', name: 'purple' },
+  question: {},
+  shuffledColours: [],
   base: [
     { colour: '#b36bc5', name: 'purple' },
     { colour: '#FFC107', name: 'yellow' },
@@ -18,8 +20,13 @@ export const gameBoardReducer = (state = initialState, action) => {
     case actionTypes.SHUFFLE_COLOURS_SUCCESS: 
       return {
         ...state,
-        base: [...action.payload.shuffled],
+        shuffledColours: [...action.payload.shuffled],
         question: {...action.payload.question}
+      };
+    case actionTypes.UPDATE_RESULT: 
+      return {
+        ...state,
+        score: state.score + 1
       };
     default:
       return state;

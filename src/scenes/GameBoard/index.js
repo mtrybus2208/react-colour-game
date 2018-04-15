@@ -33,7 +33,8 @@ const myState = {
  
 class GameBoard extends Component {
   constructor(props) {
-    super(props); 
+    super(props);
+    this.compareColours = this.compareColours.bind(this); 
   }
 
   componentDidMount() {
@@ -41,9 +42,19 @@ class GameBoard extends Component {
     this.props.shuffleColours(base, false);
   }
  
+  compareColours = (answer) => (event) => { 
+    const payload = {
+      question: this.props.question,
+      answer,
+      base: this.props.base
+    } 
+    this.props.compareColours(payload);
+  }
+ 
   render() {
     return (
-      <Container>  
+      <Container> 
+        <p>{this.props.score}</p> 
           <Paper  zDepth={1} style={style}>
               <div style={{padding: '60px'}}>
                 <Grid fluid>
@@ -53,10 +64,12 @@ class GameBoard extends Component {
                         {this.props.question.name}
                       </ColourItem>
                     </Col>
-                    {this.props.base.map((item, key) => {
+                    {this.props.shuffledColours.map((item, key) => {
                       return (
                         <Col key={key} xs={6}>
-                          <Button style={{backgroundColor: item.colour}}>
+                          <Button
+                            onClick={this.compareColours(item)}
+                            style={{backgroundColor: item.colour}}>
                             {item.name} 
                           </Button>
                         </Col>
@@ -74,7 +87,9 @@ class GameBoard extends Component {
 const mapStateToProps = ({gameBoardReducer}) => { 
   return {
     base: gameBoardReducer.base,
-    question: gameBoardReducer.question
+    shuffledColours: gameBoardReducer.shuffledColours,
+    question: gameBoardReducer.question,
+    score: gameBoardReducer.score
   }
 }
 
@@ -83,6 +98,11 @@ const mapDispatchToProps = dispatch => {
     shuffleColours: (payload) => {
       dispatch(
         fromActions.shuffleColours(payload)
+      )
+    },
+    compareColours: (payload) => {
+      dispatch(
+        fromActions.compareColours(payload)
       )
     },
   }

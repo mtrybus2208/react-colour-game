@@ -26,7 +26,7 @@ const textField = {
 }
 
 const myState = {
-  colorName: 'black',
+  colorName: 'black', 
   bg: '#000',
   color: 'pink'
 }

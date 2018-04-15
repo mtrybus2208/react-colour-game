@@ -44,3 +44,27 @@ export const shuffleColoursSuccess = (payload) => ({
   type: actionTypes.SHUFFLE_COLOURS_SUCCESS,
   payload,
 });
+
+// Compare Colours
+export const compareColours = ({answer, question, base}) => {
+  return (dispatch, getState) => {  
+    const result = base.find((element) => {
+      return element.colour === question.colour;
+    });
+    if(result.name === answer.name) {
+      return dispatch(updateResult());
+    }
+  }
+};
+
+export const compareColoursSuccess = () => ({
+  type: actionTypes.COMPARE_COLOURS_SUCCESS,
+});
+
+export const compareColoursFail = () => ({
+  type: actionTypes.COMPARE_COLOURS_FAIL,
+});
+
+export const updateResult = () => ({
+  type: actionTypes.UPDATE_RESULT,
+});

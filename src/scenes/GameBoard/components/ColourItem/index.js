@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const ColourItem = styled.div`
   color: ${props => props.customColour};
   text-align: center;
-  border-bottom: 1px solid ${props => props.customColour};
+  border: 1px solid ${props => props.customColour};
   padding: 10px;
   margin: 0px;
   margin-bottom: 20px;
