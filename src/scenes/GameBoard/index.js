@@ -33,11 +33,7 @@ const myState = {
  
 class GameBoard extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      question: [],
-      shuffled: []
-    };  
+    super(props); 
   }
 
   componentDidMount() {
