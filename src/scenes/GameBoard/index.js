@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import Button from './../../components/Button';
-import Board from './components/Board';
+import { Board, BoardHeader, BoardBody } from './components/Board';
 import ColourItem from './components/ColourItem';
 import Container from './../../components/Container';
 import * as fromActions from './actions'; 
@@ -36,29 +36,35 @@ class GameBoard extends Component {
   render() {
     return (
       <Container> 
-        <p>{this.props.score}</p> 
               <Board>
-                <Grid fluid>
-                  <Row>
-                    <Col xs={12}>
-                      <ColourItem customColour={this.props.question.colour}>
-                        {this.props.question.name}
-                      </ColourItem>
-                    </Col>
-                    {this.props.shuffledColours.map((item, key) => {
-                      return (
-                        <Col key={key} xs={6}>
+                <BoardHeader>
+                  <div>Score: {this.props.score}</div>
+                  <div>Time: {this.props.timer}s</div>
+                </BoardHeader>
+                <BoardBody>
+                  <Grid fluid>
+                    <Row>
+                      <Col xs={12}>
+                        <ColourItem customColour={this.props.question.colour}>
+                          {this.props.question.name}
+                        </ColourItem>
+                      </Col>
+                      {this.props.shuffledColours.map((item, key) => {
+                        return (
+                          <Col key={key} xs={6}>
                           <Button
                             onClick={this.compareColours(item)}
                             style={{backgroundColor: item.colour}}>
                             {item.name} 
                           </Button>
-                        </Col>
+                      </Col>
                       )
                     })}
                   </Row>
                 </Grid>
+                </BoardBody>
               </Board>
+ 
       </Container>
     );
   }
@@ -69,7 +75,8 @@ const mapStateToProps = ({gameBoardReducer}) => {
     base: gameBoardReducer.base,
     shuffledColours: gameBoardReducer.shuffledColours,
     question: gameBoardReducer.question,
-    score: gameBoardReducer.score
+    score: gameBoardReducer.score,
+    timer: gameBoardReducer.timer,
   }
 }
 
