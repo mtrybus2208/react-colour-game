@@ -52,7 +52,8 @@ export const compareColours = ({answer, question, base}) => {
       return element.colour === question.colour;
     });
     if(result.name === answer.name) {
-      return dispatch(updateResult());
+      dispatch(updateResult());
+      dispatch(shuffleColours(base, false));
     }
   }
 };
