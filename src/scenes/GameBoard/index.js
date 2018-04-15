@@ -5,31 +5,13 @@ import {
   Link
 } from 'react-router-dom';
 import { connect } from 'react-redux'; 
-import Paper from 'material-ui/Paper';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import Button from './../../components/Button';
+import Board from './components/Board';
 import ColourItem from './components/ColourItem';
 import Container from './../../components/Container';
 import * as fromActions from './actions'; 
-
-const style = {
-  maxWidth: '700px',
-  margin: '60px auto',
-  backgroundColor: 'rgba(255, 255, 255, 0.5)'
-}
-const style1 = {
-  color: '#000',
-}
-const textField = { 
-  margin: '40px auto',
-}
-
-const myState = {
-  colorName: 'black',
-  bg: '#000',
-  color: 'pink'
-}
  
 class GameBoard extends Component {
   constructor(props) {
@@ -55,8 +37,7 @@ class GameBoard extends Component {
     return (
       <Container> 
         <p>{this.props.score}</p> 
-          <Paper  zDepth={1} style={style}>
-              <div style={{padding: '60px'}}>
+              <Board>
                 <Grid fluid>
                   <Row>
                     <Col xs={12}>
@@ -77,8 +58,7 @@ class GameBoard extends Component {
                     })}
                   </Row>
                 </Grid>
-              </div>
-          </Paper> 
+              </Board>
       </Container>
     );
   }

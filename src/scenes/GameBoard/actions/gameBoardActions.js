@@ -55,6 +55,7 @@ export const compareColours = ({answer, question, base}) => {
       dispatch(updateResult());
       dispatch(shuffleColours(base, false));
     }
+    dispatch(shuffleColours(base, false));
   }
 };
 

@@ -2,7 +2,7 @@ import * as actionTypes from './../actions/actionTypes';
 
 const initialState = {
   score: 0,
-  iterations: 10,
+  timer: 60,
   question: {},
   shuffledColours: [],
   base: [
