@@ -16,12 +16,28 @@ import * as fromActions from './actions';
 class GameBoard extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      timer: null,
+      counter: this.props.timer, 
+    };
     this.compareColours = this.compareColours.bind(this); 
+    this.timerTick = this.timerTick.bind(this); 
   }
 
   componentDidMount() {
     const base = [...this.props.base];  
     this.props.shuffleColours(base, false);
+
+    let timer = setInterval(this.timerTick, 1000);
+    this.setState({timer});
+  }
+  componentWillUnmount() {
+    clearInterval(this.state.timer);
+  }
+  timerTick() {
+    this.state.counter === 0
+      ? clearInterval(this.state.timer)
+      : this.setState({ counter: this.state.counter - 1 });
   }
  
   compareColours = (answer) => (event) => { 
@@ -39,7 +55,7 @@ class GameBoard extends Component {
               <Board>
                 <BoardHeader>
                   <div>Score: {this.props.score}</div>
-                  <div>Time: {this.props.timer}s</div>
+                  <div>Time: {this.state.counter}s</div>
                 </BoardHeader>
                 <BoardBody>
                   <Grid fluid>
@@ -52,19 +68,18 @@ class GameBoard extends Component {
                       {this.props.shuffledColours.map((item, key) => {
                         return (
                           <Col key={key} xs={6}>
-                          <Button
-                            onClick={this.compareColours(item)}
-                            style={{backgroundColor: item.colour}}>
-                            {item.name} 
-                          </Button>
-                      </Col>
-                      )
-                    })}
+                            <Button
+                              onClick={this.compareColours(item)}
+                              style={{backgroundColor: item.colour}}>
+                              {item.name} 
+                            </Button>
+                          </Col>
+                        )
+                      })}
                   </Row>
                 </Grid>
                 </BoardBody>
               </Board>
- 
       </Container>
     );
   }
@@ -91,7 +106,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(
         fromActions.compareColours(payload)
       )
-    },
+    }
   }
 }
 
