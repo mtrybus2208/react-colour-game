@@ -35,9 +35,15 @@ class GameBoard extends Component {
     clearInterval(this.state.timer);
   }
   timerTick() {
-    this.state.counter === 0
-      ? clearInterval(this.state.timer)
-      : this.setState({ counter: this.state.counter - 1 });
+    // this.state.counter === 0
+    //   ? clearInterval(this.state.timer)
+    //   : this.setState({ counter: this.state.counter - 1 });
+      if(this.state.counter === 1){
+        clearInterval(this.state.timer);
+        this.props.showResults('5');
+      } else {
+        this.setState({ counter: this.state.counter - 1 });
+      }
   }
  
   compareColours = (answer) => (event) => { 
@@ -105,6 +111,11 @@ const mapDispatchToProps = dispatch => {
     compareColours: (payload) => {
       dispatch(
         fromActions.compareColours(payload)
+      )
+    },
+    showResults: (payload) => {
+      dispatch(
+        fromActions.showResults(payload)
       )
     }
   }

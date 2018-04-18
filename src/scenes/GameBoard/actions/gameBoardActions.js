@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import { push } from 'react-router-redux'; 
 
 
 export const changeQuote = (payload) => ({
@@ -74,3 +75,10 @@ export const updateResult = () => ({
 export const resetResult = () => ({
   type: actionTypes.RESET_RESULT,
 });
+
+// Navigation
+export const showResults = (payload) => {
+  return (dispatch) => {  
+    dispatch(push('/results'));
+  }
+};
