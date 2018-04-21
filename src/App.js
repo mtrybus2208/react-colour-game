@@ -1,35 +1,31 @@
 import React, { Component } from 'react';
 import Header from './components/Header/';
-import {
-  Route,
-  Link
-} from 'react-router-dom'; 
+import { Route } from 'react-router-dom'; 
 import { ConnectedRouter as Router } from 'react-router-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { ThemeProvider } from 'styled-components';
 
 import QuotesScene from './scenes/Quotes/';
 import GameBoard from './scenes/GameBoard/';
-import NewQuotes from './scenes/NewQuotes/';
+import NewGame from './scenes/NewGame/';
 import Results from './scenes/Results/';
-
-
+import theme from './theme';
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
-      <MuiThemeProvider>
-        <Router history={this.props.history}>
-          <div>
-            <Header />
-            <Route exact path="/" component={QuotesScene} />
-            <Route exact path="/new-quote" component={NewQuotes} />
-            <Route exact path="/game-board" component={GameBoard} />
-            <Route exact path="/results" component={Results} />
-          </div> 
-        </Router>
-      </MuiThemeProvider>
+      <ThemeProvider theme={theme}>
+        <MuiThemeProvider>
+            <Router history={this.props.history}>
+              <div>
+                <Header />
+                <Route exact path="/" component={NewGame} />
+                <Route exact path="/game-board" component={GameBoard} />
+                <Route exact path="/results" component={Results} />
+                <Route exact path="/best-results" component={QuotesScene} />
+              </div>
+            </Router>
+        </MuiThemeProvider>
+      </ThemeProvider>
     );
   }
 }
