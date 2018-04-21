@@ -1,1 +1,1 @@
-export * from './gameBoardReducer';
+export * from './gameBoardReducer/';
