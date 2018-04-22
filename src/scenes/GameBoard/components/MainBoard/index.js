@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import { Board, BoardHeader, BoardBody } from './../../../../components/Board';
@@ -36,6 +37,13 @@ const MainBoard = (props) => {
       </BoardBody>
     </Board>
   )
-};  
+};
+
+MainBoard.propTypes = {
+  counter: PropTypes.number,
+  compareColours: PropTypes.func,
+  gameBoard: PropTypes.object,
+};
+
 export default MainBoard;
   

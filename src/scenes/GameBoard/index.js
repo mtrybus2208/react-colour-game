@@ -49,7 +49,6 @@ class GameBoard extends Component {
     return (
       <Container> 
         <MainBoard
-          timer={this.state.timer}
           counter={this.state.counter}
           compareColours={this.compareColours}
           gameBoard={this.props.gameBoard}>
@@ -60,13 +59,10 @@ class GameBoard extends Component {
 }
 
 GameBoard.propTypes = {
-  gameBoard: PropTypes.shape({
-    score: PropTypes.number,
-    timer: PropTypes.number,
-    question: PropTypes.object,
-    base: PropTypes.arrayOf(PropTypes.object).isRequired,
-    shuffledColours: PropTypes.arrayOf(PropTypes.object).isRequired,
-  })
+  gameBoard: PropTypes.object,
+  shuffleColours: PropTypes.func,
+  compareColours: PropTypes.func,
+  showResults: PropTypes.func,
 };
 
 const mapStateToProps = ({gameBoard}) => { 
