@@ -1,15 +1,10 @@
-import React from 'react';
+import styled from 'styled-components';
 
-import './styles.css';
- 
-
-const Container = ({children}) => {
-  
-  return (
-    <div className="main-container">
-      {children}
-    </div>
-  )
-};  
+const Container = styled.div`
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+`;  
 export default Container;
   
