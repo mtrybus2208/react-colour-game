@@ -1,33 +1,5 @@
 import styled from 'styled-components';
-
-export const BoardHeader = styled.div`
-  display: flex;  
-  background: #fdfdfd;
-  border-bottom: 1px solid #e9e4ea;
-  div {
-    color: #a692aa;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    width: 100%;
-    padding: 15px;
-    &:first-child {
-      border-right: 1px solid #e9e4ea;
-    }
-  }
-  
-`
-export const BoardBody = styled.div`
-  border-top: 1px solid #fffcfc;
-  padding: 10px 0;
-
-  @media (min-width: 576px) {
-    padding: 30px 20px;
-  }
-  @media (min-width: 768px) {
-    padding: 40px 60px;
-  }
-`
+import PropTypes from 'prop-types';
 
 export const Board = styled.div`
   max-width: 700px;
@@ -41,4 +13,10 @@ export const Board = styled.div`
   @media (min-width: 768px) {
     padding: ${props => props.padding === 'medium' ? '20px 60px' : 0};
   }
-`; 
+`;
+ 
+Board.propTypes = {
+  padding: PropTypes.string
+};
+
+export default Board;
