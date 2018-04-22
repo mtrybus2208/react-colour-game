@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Button = styled.button`
   color: #fff;
-  background-color: #b36bc5;
-  border-color: #b36bc5;
+  background-color: ${props => props.bg || props.theme.primary}};
+  border-color: ${props => props.bg || props.theme.primary};
   box-sizing: border-box;
   font-family: Roboto, sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -24,6 +25,11 @@ const Button = styled.button`
   line-height: 1.5;
   border: none;
   text-transform: uppercase;
+  outline: none!important;
 `;
+ 
+Button.propTypes = {
+  bg: PropTypes.string,
+};
  
 export default Button;

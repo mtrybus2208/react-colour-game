@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
-import { Board, BoardHeader, BoardBody } from './../../../../components/Board';
+import { Board } from './../../../../components/Board';
+import { BoardHeader } from './../../../../components/Board/BoardHeader';
+import { BoardBody } from './../../../../components/Board/BoardBody';
 import Button from './../../../../components/Button';
 import ColourItem from './../ColourItem';
 
@@ -27,7 +29,7 @@ const MainBoard = (props) => {
                 <Col key={key} xs={6}>
                   <Button
                     onClick={props.compareColours(item)}
-                    style={{backgroundColor: item.colour}}>
+                    bg={item.colour}>
                     {item.name} 
                   </Button>
                 </Col>
