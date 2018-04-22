@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
  
 const ColourItem = styled.div`
   color: ${props => props.customColour};
@@ -12,4 +13,13 @@ const ColourItem = styled.div`
   font-size: 1.2rem;
   text-transform: uppercase;
 `;
+
+ColourItem.defaultProps = {
+  customColour: '#eee',
+};
+
+ColourItem.propTypes = {
+  customColour: PropTypes.string.isRequired,
+};
+
 export default ColourItem;

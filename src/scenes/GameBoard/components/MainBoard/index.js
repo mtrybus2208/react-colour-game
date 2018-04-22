@@ -17,7 +17,8 @@ const MainBoard = (props) => {
         <Grid fluid>
           <Row>
             <Col xs={12}>
-              <ColourItem customColour={props.gameBoard.question.colour}>
+              <ColourItem 
+                customColour={props.gameBoard.question.colour}>
                 {props.gameBoard.question.name}
               </ColourItem>
             </Col>
