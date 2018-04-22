@@ -4,23 +4,25 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'; 
+import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { injectGlobal } from 'styled-components';
 
-import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { quotesReducer } from './scenes/Quotes/reducers';
 import { gameBoardReducer } from './scenes/GameBoard/reducers';
-import { newQuotesReducer } from './scenes/NewQuotes/reducers';
+import { newGameReducer } from './scenes/NewGame/reducers';
+
+import bg from './assets/img/bg.jpg';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer  = combineReducers({
-  quotesReducer,
-  newQuotesReducer,
-  gameBoardReducer,
+  quotesReducer, 
+  newGameReducer,
+  gameBoard: gameBoardReducer,
   router: routerReducer
 });
 
@@ -38,3 +40,12 @@ ReactDOM.render(
   document.getElementById('root')
 );
 registerServiceWorker();
+
+injectGlobal`
+  body {
+    background-image: url(${bg}); 
+    margin: 0;
+    padding: 0; 
+    font-family: 'Roboto', sans-serif;
+  }
+`
