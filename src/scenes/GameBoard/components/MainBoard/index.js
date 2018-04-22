@@ -40,9 +40,9 @@ const MainBoard = (props) => {
 };
 
 MainBoard.propTypes = {
-  counter: PropTypes.number,
-  compareColours: PropTypes.func,
-  gameBoard: PropTypes.object,
+  counter: PropTypes.number.isRequired,
+  compareColours: PropTypes.func.isRequired,
+  gameBoard: PropTypes.object.isRequired,
 };
 
 export default MainBoard;

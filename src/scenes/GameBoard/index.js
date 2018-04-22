@@ -59,10 +59,10 @@ class GameBoard extends Component {
 }
 
 GameBoard.propTypes = {
-  gameBoard: PropTypes.object,
-  shuffleColours: PropTypes.func,
-  compareColours: PropTypes.func,
-  showResults: PropTypes.func,
+  gameBoard: PropTypes.object.isRequired,
+  shuffleColours: PropTypes.func.isRequired,
+  compareColours: PropTypes.func.isRequired,
+  showResults: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({gameBoard}) => { 
