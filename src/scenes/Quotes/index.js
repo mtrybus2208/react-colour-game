@@ -1,9 +1,4 @@
 import React, { Component } from 'react'; 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
 import { connect } from 'react-redux';   
 import RaisedButton from 'material-ui/RaisedButton';
 

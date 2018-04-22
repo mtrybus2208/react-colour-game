@@ -1,9 +1,4 @@
 import React, { Component } from 'react'; 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
 import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
@@ -16,28 +11,16 @@ const style = {
   margin: '60px auto',
   padding: '60px',
 }
-const style1 = {
-  color: '#000',
-}
+
 const textField = { 
   margin: '40px auto',
 }
 
-const myState = {
-  colorName: 'black', 
-  bg: '#000',
-  color: 'pink'
-}
  
 class Results extends Component {
-  constructor(props) {
-    super(props); 
-    // this.onChangeQuote = this.onChangeQuote.bind(this);
-  }
-
-  // onChangeQuote = (param) => (event) => { 
-  //   const { value } = event.target;
-  //   this.props.changeQuote(value); 
+  // constructor(props) {
+  //   super(props); 
+  //   // this.onChangeQuote = this.onChangeQuote.bind(this);
   // }
 
   render() {

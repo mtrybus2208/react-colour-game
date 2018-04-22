@@ -1,10 +1,7 @@
-import React, { PropTypes } from 'react';
-import Paper from 'material-ui/Paper';
-
+import React from 'react';
 import './index.css';
 
-const Quote = ({content}) => {
-  
+const Quote = ({content}) => {  
   return (
     <div className="quote">{content}</div>
   )
