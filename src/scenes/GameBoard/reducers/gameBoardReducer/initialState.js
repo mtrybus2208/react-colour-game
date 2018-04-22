@@ -1,6 +1,6 @@
 export default {
   score: 0,
-  timer: 55,
+  timer: 1155,
   question: {},
   shuffledColours: [],
   base: [
