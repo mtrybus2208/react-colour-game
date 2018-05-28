@@ -18,12 +18,31 @@ const Info = styled.div`
 class NewGame extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      timer: 2,
+      difficulty: 3,
+    };
+
     this.startGame = this.startGame.bind(this);   
+    this.setGameSettings = this.setGameSettings.bind(this);
   }
 
   startGame = () => (event) => {
-    this.props.startGame({});
+    // this.props.startGame({});
+    event.preventDefault();
+    console.log(`submit`);
+    console.log({
+      timer: this.state.timer,
+      difficulty: this.state.difficulty,
+    });
   }
+
+  setGameSettings = (type) => (event, index, value) => {
+    this.setState({
+      [type]: value
+    });
+  }
+ 
 
   render() {
     return (
@@ -38,27 +57,30 @@ class NewGame extends Component {
                 Jak grać?  Wyświetlony zostanie kolorowy wyraz. Poniżej wyświetlone zostaną nazwy kolorów. Kliknij myszką na nazwę koloru, w jakim napisany jest wyraz.
               </Par>
             </Info>
-            <SelectField
-              fullWidth
-              floatingLabelText="Time"
-              value={1}>
-              <MenuItem value={1} primaryText="30s" />
-              <MenuItem value={2} primaryText="60s" />
-              <MenuItem value={3} primaryText="90s" />
-            </SelectField>
+            <form onSubmit={this.startGame()}>
+              <SelectField
+                onChange={this.setGameSettings(`timer`)}
+                fullWidth
+                floatingLabelText="Time"
+                value={this.state.timer}>
+                <MenuItem value={1} primaryText="30s" />
+                <MenuItem value={2} primaryText="60s" />
+                <MenuItem value={3} primaryText="90s" />
+              </SelectField>
 
-            <SelectField
-              fullWidth
-              floatingLabelText="Difficulty"
-              value={2}>
-              <MenuItem value={1} primaryText="easy" />
-              <MenuItem value={2} primaryText="medium" />
-              <MenuItem value={3} primaryText="hard" />
-            </SelectField>
-          <Button
-            onClick={this.startGame()}>
-            Play
-          </Button>
+              <SelectField
+                onChange={this.setGameSettings(`difficulty`)}
+                fullWidth
+                floatingLabelText="Difficulty"
+                value={this.state.difficulty}>
+                <MenuItem value={1} primaryText="easy" />
+                <MenuItem value={2} primaryText="medium" />
+                <MenuItem value={3} primaryText="hard" />
+              </SelectField>
+            <Button type="submit">
+              Play
+            </Button>
+          </form>
         </Board>
       </Container>
     );

@@ -9,7 +9,6 @@ import { injectGlobal } from 'styled-components';
 
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { quotesReducer } from './scenes/Quotes/reducers';
 import { gameBoardReducer } from './scenes/GameBoard/reducers';
 import { newGameReducer } from './scenes/NewGame/reducers';
 
@@ -20,7 +19,6 @@ const middleware = routerMiddleware(history);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer  = combineReducers({
-  quotesReducer, 
   newGameReducer,
   gameBoard: gameBoardReducer,
   router: routerReducer

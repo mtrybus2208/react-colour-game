@@ -5,7 +5,6 @@ import { ConnectedRouter as Router } from 'react-router-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { ThemeProvider } from 'styled-components';
 
-import QuotesScene from './scenes/Quotes/';
 import GameBoard from './scenes/GameBoard/';
 import NewGame from './scenes/NewGame/';
 import Results from './scenes/Results/';
@@ -21,7 +20,6 @@ class App extends Component {
                 <Route exact path="/" component={NewGame} />
                 <Route exact path="/game-board" component={GameBoard} />
                 <Route exact path="/results" component={Results} />
-                <Route exact path="/best-results" component={QuotesScene} />
               </div>
             </Router>
         </MuiThemeProvider>
