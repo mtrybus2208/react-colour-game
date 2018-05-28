@@ -19,7 +19,7 @@ const middleware = routerMiddleware(history);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer  = combineReducers({
-  newGameReducer,
+  newGame: newGameReducer,
   gameBoard: gameBoardReducer,
   router: routerReducer
 });

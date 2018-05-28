@@ -19,7 +19,7 @@ class NewGame extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timer: 2,
+      timer: 30,
       difficulty: 3,
     };
 
@@ -28,13 +28,14 @@ class NewGame extends Component {
   }
 
   startGame = () => (event) => {
-    // this.props.startGame({});
     event.preventDefault();
-    console.log(`submit`);
-    console.log({
+
+    const formData = {
       timer: this.state.timer,
       difficulty: this.state.difficulty,
-    });
+    };
+
+    this.props.startGame(formData);    
   }
 
   setGameSettings = (type) => (event, index, value) => {
@@ -63,9 +64,9 @@ class NewGame extends Component {
                 fullWidth
                 floatingLabelText="Time"
                 value={this.state.timer}>
-                <MenuItem value={1} primaryText="30s" />
-                <MenuItem value={2} primaryText="60s" />
-                <MenuItem value={3} primaryText="90s" />
+                <MenuItem value={30} primaryText="30s" />
+                <MenuItem value={60} primaryText="60s" />
+                <MenuItem value={90} primaryText="90s" />
               </SelectField>
 
               <SelectField
@@ -88,8 +89,7 @@ class NewGame extends Component {
 }
 
 const mapStateToProps = (state) => { 
-  return { 
-  }
+  return { }
 }
 
 const mapDispatchToProps = dispatch => {

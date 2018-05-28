@@ -11,7 +11,7 @@ class GameBoard extends Component {
     super(props);
     this.state = {
       timer: null,
-      counter: this.props.gameBoard.timer, 
+      counter: this.props.newGame.timer, 
     };
     this.compareColours = this.compareColours.bind(this); 
     this.timerTick = this.timerTick.bind(this); 
@@ -23,6 +23,8 @@ class GameBoard extends Component {
 
     let timer = setInterval(this.timerTick, 1000);
     this.setState({timer});
+    console.log(`this.props`);
+    console.log(this.props);
   }
   componentWillUnmount() {
     clearInterval(this.state.timer);
@@ -65,9 +67,10 @@ GameBoard.propTypes = {
   showResults: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({gameBoard}) => { 
+const mapStateToProps = ({gameBoard, newGame}) => { 
   return { 
-    gameBoard
+    gameBoard,
+    newGame,
   }
 }
 
