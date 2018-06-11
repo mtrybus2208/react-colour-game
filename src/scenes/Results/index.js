@@ -1,22 +1,21 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
 
 import Button from './../../components/Button';
-import Container from './../../components/Container'; 
+import Container from './../../components/Container';
 
 const style = {
   maxWidth: '700px',
   margin: '60px auto',
   padding: '60px',
-}
+};
 
 const textField = { 
   margin: '40px auto',
-}
+};
 
- 
 class Results extends Component {
   // constructor(props) {
   //   super(props); 

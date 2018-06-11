@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
-import Header from './components/Header/';
 import { Route } from 'react-router-dom'; 
 import { ConnectedRouter as Router } from 'react-router-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from 'styled-components';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
+import Header from './components/Header/';
 import GameBoard from './scenes/GameBoard/';
 import NewGame from './scenes/NewGame/';
 import Results from './scenes/Results/';
 import theme from './theme';
+
+const muiTheme = createMuiTheme();
 class App extends Component {
+
+  componentDidMount() {}
+
   render() {
     return (
-      <ThemeProvider theme={theme}>
-        <MuiThemeProvider>
+      <React.Fragment>
+        <CssBaseline />
+        <ThemeProvider theme={theme}>
+          <MuiThemeProvider theme={muiTheme}>
             <Router history={this.props.history}>
               <div>
                 <Header />
@@ -22,8 +30,9 @@ class App extends Component {
                 <Route exact path="/results" component={Results} />
               </div>
             </Router>
-        </MuiThemeProvider>
-      </ThemeProvider>
+          </MuiThemeProvider>
+        </ThemeProvider>
+      </React.Fragment>
     );
   }
 }
